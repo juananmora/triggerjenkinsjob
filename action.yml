@@ -35,5 +35,5 @@ runs:
       shell: bash
     - name: Run the script
       run: |
-        python jenkins_job2.py ${{ inputs.urljenkins }} ${{ inputs.user }} ${{ inputs.password }} ${{ inputs.params  }}
+        python jenkins_job2.py ${{ inputs.urljenkins }} ${{ inputs.user }} ${{ inputs.password }} '${{ inputs.params  }}'
       shell: bash
