@@ -4,15 +4,21 @@ import argparse
 import logging
 from requests.auth import HTTPBasicAuth
 import sys
+import json
 
 logging.basicConfig(level=logging.INFO)
 
-def trigger_jenkins_job(urljenkins, urlrepo, entorno, user, token, rama):
+def trigger_jenkins_job(urljenkins, user, token, params):
 
     #base_url = "http://mat.qualitat.solucions.gencat.cat/jenkins/job/functional-test-jenkinsfile"
+    urlrepo = params['urlrepo']
+    entorno = params['entorno']
+    rama = params['rama']
+    
     base_url = f"{urljenkins}"
     jenkins_url = f"{base_url}/buildWithParameters?repositorio={urlrepo}&entorno={entorno}&rama={rama}"
     job_url = f"{base_url}/lastBuild/api/json"
+    
     auth = HTTPBasicAuth(user, token)
 
     logging.info(f'Iniciando trabajo en: {jenkins_url}')
@@ -65,13 +71,14 @@ def trigger_jenkins_job(urljenkins, urlrepo, entorno, user, token, rama):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Trigger Jenkins Job")
-    parser.add_argument('urljenkins', type=str, help='URL of Jenkins Job')
-    parser.add_argument('urlrepo', type=str, help='URL of the repository')
-    parser.add_argument('entorno', type=str, help='Environment name')
+    parser.add_argument('urljenkins', type=str, help='URL of Jenkins')
     parser.add_argument('user', type=str, help='Username for authentication')
     parser.add_argument('token', type=str, help='Token for authentication')
-    parser.add_argument('rama', type=str, help='Branch name')
+    parser.add_argument('parameters', type=str, help='Other parameters in JSON format')
 
     args = parser.parse_args()
 
-    trigger_jenkins_job(args.urljenkins, args.urlrepo, args.entorno, args.user, args.token, args.rama)
+    # Parseamos los parámetros como JSON
+    params = json.loads(args.parameters)
+
+    trigger_jenkins_job(args.urljenkins, args.user, args.token, params)
