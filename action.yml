@@ -1,6 +1,9 @@
 name: 'TriggerJenkinsJob'
 description: 'Trigger a Jenkins job from GitHub actions'
 inputs:
+  urljenkins:
+    description: 'The Jenkins Job URL'
+    required: true
   urlrepo:
     description: 'The repository URL'
     required: true
@@ -36,5 +39,5 @@ runs:
       shell: bash
     - name: Run the script
       run: |
-        python jenkins_job2.py ${{ inputs.urlrepo }} ${{ inputs.entorno }} ${{ inputs.user }} ${{ inputs.password }} ${{ inputs.rama  }}
+        python jenkins_job2.py ${{ inputs.urljenkins }} ${{ inputs.urlrepo }} ${{ inputs.entorno }} ${{ inputs.user }} ${{ inputs.password }} ${{ inputs.rama  }}
       shell: bash
