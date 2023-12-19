@@ -7,9 +7,10 @@ import sys
 
 logging.basicConfig(level=logging.INFO)
 
-def trigger_jenkins_job(urlrepo, entorno, user, token, rama):
+def trigger_jenkins_job(urljenkins, urlrepo, entorno, user, token, rama):
 
-    base_url = "http://mat.qualitat.solucions.gencat.cat/jenkins/job/functional-test-jenkinsfile"
+    #base_url = "http://mat.qualitat.solucions.gencat.cat/jenkins/job/functional-test-jenkinsfile"
+    base_url = f"{urljenkins}"
     jenkins_url = f"{base_url}/buildWithParameters?repositorio={urlrepo}&entorno={entorno}&rama={rama}"
     job_url = f"{base_url}/lastBuild/api/json"
     auth = HTTPBasicAuth(user, token)
@@ -64,6 +65,7 @@ def trigger_jenkins_job(urlrepo, entorno, user, token, rama):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Trigger Jenkins Job")
+    parser.add_argument('urljenkins', type=str, help='URL of Jenkins Job')
     parser.add_argument('urlrepo', type=str, help='URL of the repository')
     parser.add_argument('entorno', type=str, help='Environment name')
     parser.add_argument('user', type=str, help='Username for authentication')
@@ -72,4 +74,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    trigger_jenkins_job(args.urlrepo, args.entorno, args.user, args.token, args.rama)
+    trigger_jenkins_job(args.urljenkins, args.urlrepo, args.entorno, args.user, args.token, args.rama)
