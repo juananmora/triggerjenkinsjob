@@ -23,7 +23,7 @@ runs:
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+        python-version: '3.9'
     - name: Setup Node.js environment 
       uses: actions/setup-node@v4
       with:
@@ -31,7 +31,7 @@ runs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install requests
+        pip install requests argparse
       shell: bash
     - name: Run the script
       run: |
