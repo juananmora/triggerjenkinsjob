@@ -4,20 +4,14 @@ inputs:
   urljenkins:
     description: 'The Jenkins Job URL'
     required: true
-  urlrepo:
-    description: 'The repository URL'
-    required: true
-  entorno:
-    description: 'The environment name'
-    required: true
   user:
     description: 'The username for HTTP basic auth'
     required: true
   password:
     description: 'The password (or token) for HTTP basic auth'
     required: true
-  rama:
-    description: 'The branch'
+  params:
+    description: 'Job Params'
     required: true
 runs:
   using: 'composite'
@@ -41,5 +35,5 @@ runs:
       shell: bash
     - name: Run the script
       run: |
-        python jenkins_job2.py ${{ inputs.urljenkins }} ${{ inputs.urlrepo }} ${{ inputs.entorno }} ${{ inputs.user }} ${{ inputs.password }} ${{ inputs.rama  }}
+        python jenkins_job2.py ${{ inputs.urljenkins }} ${{ inputs.user }} ${{ inputs.password }} ${{ inputs.params  }}
       shell: bash
