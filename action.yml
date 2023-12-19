@@ -32,5 +32,5 @@ runs:
       shell: bash
     - name: Run the script
       run: |
-        python python_script.py ${{ inputs.urlrepo }} ${{ inputs.entorno }} ${{ inputs.user }} ${{ inputs.password }} ${{ inputs.rama  }}
+        python jenkins_job2.py ${{ inputs.urlrepo }} ${{ inputs.entorno }} ${{ inputs.user }} ${{ inputs.password }} ${{ inputs.rama  }}
       shell: bash
