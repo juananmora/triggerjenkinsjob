@@ -1,0 +1,36 @@
+name: 'TriggerJenkinsJob'
+description: 'Trigger a Jenkins job from GitHub actions'
+inputs:
+  urlrepo:
+    description: 'The repository URL'
+    required: true
+  entorno:
+    description: 'The environment name'
+    required: true
+  user:
+    description: 'The username for HTTP basic auth'
+    required: true
+  password:
+    description: 'The password (or token) for HTTP basic auth'
+    required: true
+  rama:
+    description: 'The branch'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install requests
+      shell: bash
+    - name: Run the script
+      run: |
+        python python_script.py ${{ inputs.urlrepo }} ${{ inputs.entorno }} ${{ inputs.user }} ${{ inputs.password }} ${{ inputs.rama  }}
+      shell: bash
