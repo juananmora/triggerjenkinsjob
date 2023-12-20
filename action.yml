@@ -22,8 +22,8 @@ runs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        repository: juananmora/jenkins_actions
-        ref: development
+        repository: juananmora/TriggerJenkinsJob
+        ref: main
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
