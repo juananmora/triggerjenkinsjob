@@ -8,7 +8,7 @@ This GitHub Action triggers a Jenkins job from your GitHub Actions workflow.
 - `user`: The username for HTTP basic auth. (required)
 - `password`: The password (or token) for HTTP basic auth. (required)
 - `job`: The Job Name. (required)
-- `params`: Job Params. (required)
+- `params`: Job Params in Json format. (required)
 
 ## Workflow
 The Action follows these steps:
@@ -38,7 +38,7 @@ This action uses the Node version 16 and Python version 3.9 environment to run t
   with:
     urljenkins: 'http://my_jenkins_url'
     user: 'my_username'
-    password: 'my_password'
+    password: 'my_token'
     job: 'my_job'
-    params: 'my_params'
+    params: '{"field1":"value1"}'
 
