@@ -34,7 +34,7 @@ This action uses the Node version 16 and Python version 3.9 environment to run t
 
 ```yaml
 - name: Trigger Jenkins Job
-  uses: juananmora/jenkins_job@v1
+  uses: juananmora/triggerjenkinsjob@v1
   with:
     urljenkins: 'http://my_jenkins_url'
     user: 'my_username'
