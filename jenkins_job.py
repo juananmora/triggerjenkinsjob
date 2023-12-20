@@ -29,6 +29,8 @@ def trigger_jenkins_job(jenkins_url, username, password, job, params):
         queue_item = job.invoke(build_params=params)
         queue_item.block_until_complete()
 
+        logging.info(build.get_console())
+        
         build = queue_item.get_build()
         logging.info("Job status: %s", build.get_status())
         if build.get_status() != 'SUCCESS':
@@ -42,7 +44,7 @@ def trigger_jenkins_job(jenkins_url, username, password, job, params):
         logging.error("Failed to build job '%s': %s", job_name, e)
         sys.exit(1)
         
-    logging.info(build.get_console())
+    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Trigger Jenkins Job")
