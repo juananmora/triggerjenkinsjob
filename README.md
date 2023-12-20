@@ -10,44 +10,35 @@ This GitHub Action triggers a Jenkins job from your GitHub Actions workflow.
 - `job`: The Job Name. (required)
 - `params`: Job Params. (required)
 
+## Workflow
+The Action follows these steps:
+
+- Checkout repository: It checkouts the 'juananmora/jenkins_actions' repository at the 'development' reference using 'actions/checkout@v4'.
+
+- Setup Python: It sets up a Python environment with version 3.9 using 'actions/setup-python@v4'.
+
+- Setup Node.js environment: It sets up a Node.js environment with version 16 using 'actions/setup-node@v4'.
+
+- Install dependencies: It installs the necessary Python packages using pip (requests, argparse, and jenkinsapi).
+
+- Run the script: It runs the 'jenkins_job.py' script with the entered inputs.
+
+This script is run within a bash shell with the inputs mentioned above.
+
+The primary aim of this GitHub Action is to aid the process of triggering Jenkins jobs from a GitHub workflow simple and straightforward.
+
+## Note
+This action uses the Node version 16 and Python version 3.9 environment to run the Python script that triggers the Jenkins job. Please ensure that the Jenkins job is compatible with these versions.
+
 ## Usage
 
 ```yaml
-name: Trigger Jenkins Job
+- name: Trigger Jenkins Job
+  uses: juananmora/TriggerJenkinsJob@v1
+  with:
+    urljenkins: 'http://my_jenkins_url'
+    user: 'my_username'
+    password: 'my_password'
+    job: 'my_job'
+    params: 'my_params'
 
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  trigger-jenkins-job:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          repository: juananmora/jenkins_actions
-          ref: development
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install requests argparse jenkinsapi
-        shell: bash
-
-      - name: Run the script
-        run: |
-          python jenkins_job.py ${{ inputs.urljenkins }} ${{ inputs.user }} ${{ inputs.password }} ${{ inputs.job }} '${{ inputs.params }}'
-        shell: bash
