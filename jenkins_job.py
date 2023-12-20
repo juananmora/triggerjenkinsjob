@@ -28,10 +28,11 @@ def trigger_jenkins_job(jenkins_url, username, password, job, params):
         job = server[job_name]
         queue_item = job.invoke(build_params=params)
         queue_item.block_until_complete()
+       
+        build = queue_item.get_build()
 
         logging.info(build.get_console())
         
-        build = queue_item.get_build()
         logging.info("Job status: %s", build.get_status())
         if build.get_status() != 'SUCCESS':
             sys.exit(1)
