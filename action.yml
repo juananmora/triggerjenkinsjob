@@ -22,7 +22,7 @@ runs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        repository: juananmora/TriggerJenkinsJob
+        repository: juananmora/triggerjenkinsjob
         ref: main
     - name: Setup Python
       uses: actions/setup-python@v4
