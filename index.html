@@ -11,6 +11,17 @@
       font-family: 'Arial', sans-serif;
       line-height: 1.6;
       margin: 40px;
+      display: flex;
+    }
+
+    nav {
+      width: 200px;
+      background-color: #161b22;
+      padding: 20px;
+      border-radius: 5px;
+      position: fixed;
+      height: 100%;
+      overflow-y: auto;
     }
 
     h1, h2 {
@@ -48,47 +59,85 @@
       font-family: 'Courier New', monospace;
       color: #58a6ff;
     }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    main {
+      margin-left: 240px;
+    }
+
+    /* Estilo para enlaces en el menú lateral */
+    nav a {
+      color: #c9d1d9;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Estilo para enlaces activos en el menú lateral */
+    nav a:hover,
+    nav a:active,
+    nav a:focus {
+      color: #58a6ff;
+    }
   </style>
 </head>
 <body>
 
-<h1>TriggerJenkinsJob GitHub Action</h1>
+<nav>
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#inputs">Inputs</a></li>
+    <li><a href="#workflow">Workflow</a></li>
+    <li><a href="#note">Note</a></li>
+    <li><a href="#usage">Usage</a></li>
+  </ul>
+</nav>
 
-<img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*eec7bjSDupVJD_x0vyL7Gg.jpeg" alt="Image">
+<main>
+  <h1 id="introduction">TriggerJenkinsJob GitHub Actions</h1>
+    <!-- Agrega una imagen de ejemplo -->
+ <img alt=""  width="1024" height="351"  src="https://miro.medium.com/v2/resize:fit:620/1*eec7bjSDupVJD_x0vyL7Gg.jpeg">
 
-<p>This GitHub Action triggers a Jenkins job from your GitHub Actions workflow.</p>
 
-<h2>Inputs</h2>
+  <p>This GitHub Action triggers a Jenkins job from your GitHub Actions workflow.</p>
 
-<ul>
-  <li><code>urljenkins</code>: The Jenkins Job URL. (required)</li>
-  <li><code>user</code>: The username for HTTP basic auth. (required)</li>
-  <li><code>password</code>: The password (or token) for HTTP basic auth. (required)</li>
-  <li><code>job</code>: The Job Name. (required)</li>
-  <li><code>params</code>: Job Params in Json format. (required)</li>
-</ul>
+  <h2 id="inputs">Inputs</h2>
 
-<h2>Workflow</h2>
+  <ul>
+    <li><code>urljenkins</code>: The Jenkins Job URL. (required)</li>
+    <li><code>user</code>: The username for HTTP basic auth. (required)</li>
+    <li><code>password</code>: The password (or token) for HTTP basic auth. (required)</li>
+    <li><code>job</code>: The Job Name. (required)</li>
+    <li><code>params</code>: Job Params in Json format. (required)</li>
+  </ul>
 
-<ol>
-  <li>Checkout repository: It checkouts the 'juananmora/jenkins_actions' repository at the 'development' reference using 'actions/checkout@v4'.</li>
-  <li>Setup Python: It sets up a Python environment with version 3.9 using 'actions/setup-python@v4'.</li>
-  <li>Setup Node.js environment: It sets up a Node.js environment with version 16 using 'actions/setup-node@v4'.</li>
-  <li>Install dependencies: It installs the necessary Python packages using pip (requests, argparse, and jenkinsapi).</li>
-  <li>Run the script: It runs the 'jenkins_job.py' script with the entered inputs.</li>
-</ol>
+  <h2 id="workflow">Workflow</h2>
 
-<p>This script is run within a bash shell with the inputs mentioned above.</p>
+  <ol>
+    <li>Checkout repository: It checkouts the 'juananmora/jenkins_actions' repository at the 'development' reference using 'actions/checkout@v4'.</li>
+    <li>Setup Python: It sets up a Python environment with version 3.9 using 'actions/setup-python@v4'.</li>
+    <li>Setup Node.js environment: It sets up a Node.js environment with version 16 using 'actions/setup-node@v4'.</li>
+    <li>Install dependencies: It installs the necessary Python packages using pip (requests, argparse, and jenkinsapi).</li>
+    <li>Run the script: It runs the 'jenkins_job.py' script with the entered inputs.</li>
+  </ol>
 
-<p>The primary aim of this GitHub Action is to aid the process of triggering Jenkins jobs from a GitHub workflow simple and straightforward.</p>
+  <p>This script is run within a bash shell with the inputs mentioned above.</p>
 
-<h2>Note</h2>
+  <p>The primary aim of this GitHub Action is to aid the process of triggering Jenkins jobs from a GitHub workflow simple and straightforward.</p>
 
-<p>This action uses the Node version 16 and Python version 3.9 environment to run the Python script that triggers the Jenkins job. Please ensure that the Jenkins job is compatible with these versions.</p>
+  <h2 id="note">Note</h2>
 
-<h2>Usage</h2>
+  <p>This action uses the Node version 16 and Python version 3.9 environment to run the Python script that triggers the Jenkins job. Please ensure that the Jenkins job is compatible with these versions.</p>
 
-<pre><code>- name: Trigger Jenkins Job
+  <h2 id="usage">Usage</h2>
+
+  <pre><code>- name: Trigger Jenkins Job
   uses: juananmora/triggerjenkinsjob@v1
   with:
     urljenkins: 'http://my_jenkins_url'
@@ -96,12 +145,10 @@
     password: 'my_token'
     job: 'my_job'
     params: '{"field1":"value1"}'
-</code></pre>
+  </code></pre>
+
+
+</main>
 
 </body>
 </html>
-
-
-</html>
-
-
