@@ -1,1 +1,48 @@
-<h1>Hello Jon!!</h1>
+<h1>TriggerJenkinsJob GitHub Action</h1>
+
+<p>This GitHub Action triggers a Jenkins job from your GitHub Actions workflow.</p>
+
+<h2>Inputs</h2>
+
+<ul>
+  <li><code>urljenkins</code>: The Jenkins Job URL. (required)</li>
+  <li><code>user</code>: The username for HTTP basic auth. (required)</li>
+  <li><code>password</code>: The password (or token) for HTTP basic auth. (required)</li>
+  <li><code>job</code>: The Job Name. (required)</li>
+  <li><code>params</code>: Job Params in Json format. (required)</li>
+</ul>
+
+<h2>Workflow</h2>
+
+<p>The Action follows these steps:</p>
+
+<ol>
+  <li>Checkout repository: It checkouts the 'juananmora/jenkins_actions' repository at the 'development' reference using 'actions/checkout@v4'.</li>
+  <li>Setup Python: It sets up a Python environment with version 3.9 using 'actions/setup-python@v4'.</li>
+  <li>Setup Node.js environment: It sets up a Node.js environment with version 16 using 'actions/setup-node@v4'.</li>
+  <li>Install dependencies: It installs the necessary Python packages using pip (requests, argparse, and jenkinsapi).</li>
+  <li>Run the script: It runs the 'jenkins_job.py' script with the entered inputs.</li>
+</ol>
+
+<p>This script is run within a bash shell with the inputs mentioned above.</p>
+
+<p>The primary aim of this GitHub Action is to aid the process of triggering Jenkins jobs from a GitHub workflow simple and straightforward.</p>
+
+<h2>Note</h2>
+
+<p>This action uses the Node version 16 and Python version 3.9 environment to run the Python script that triggers the Jenkins job. Please ensure that the Jenkins job is compatible with these versions.</p>
+
+<h2>Usage</h2>
+
+<pre><code>- name: Trigger Jenkins Job
+  uses: juananmora/triggerjenkinsjob@v1
+  with:
+    urljenkins: 'http://my_jenkins_url'
+    user: 'my_username'
+    password: 'my_token'
+    job: 'my_job'
+    params: '{"field1":"value1"}'
+</code></pre>
+
+
+
