@@ -1,8 +1,59 @@
-<h1>TriggerJenkinsJob GitHub Action</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TriggerJenkinsJob GitHub Action</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      margin: 40px;
+    }
+
+    h1, h2 {
+      color: #333;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+    }
+
+    p {
+      color: #555;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    ol {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      color: #0074cc;
+    }
+  </style>
+</head>
+<body>
+
+<h1 style="color: #0074cc;">TriggerJenkinsJob GitHub Action</h1>
 
 <p>This GitHub Action triggers a Jenkins job from your GitHub Actions workflow.</p>
 
-<h2>Inputs</h2>
+<h2 style="color: #0074cc;">Inputs</h2>
 
 <ul>
   <li><code>urljenkins</code>: The Jenkins Job URL. (required)</li>
@@ -12,9 +63,7 @@
   <li><code>params</code>: Job Params in Json format. (required)</li>
 </ul>
 
-<h2>Workflow</h2>
-
-<p>The Action follows these steps:</p>
+<h2 style="color: #0074cc;">Workflow</h2>
 
 <ol>
   <li>Checkout repository: It checkouts the 'juananmora/jenkins_actions' repository at the 'development' reference using 'actions/checkout@v4'.</li>
@@ -28,11 +77,11 @@
 
 <p>The primary aim of this GitHub Action is to aid the process of triggering Jenkins jobs from a GitHub workflow simple and straightforward.</p>
 
-<h2>Note</h2>
+<h2 style="color: #0074cc;">Note</h2>
 
 <p>This action uses the Node version 16 and Python version 3.9 environment to run the Python script that triggers the Jenkins job. Please ensure that the Jenkins job is compatible with these versions.</p>
 
-<h2>Usage</h2>
+<h2 style="color: #0074cc;">Usage</h2>
 
 <pre><code>- name: Trigger Jenkins Job
   uses: juananmora/triggerjenkinsjob@v1
@@ -44,5 +93,5 @@
     params: '{"field1":"value1"}'
 </code></pre>
 
-
-
+</body>
+</html>
