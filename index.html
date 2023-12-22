@@ -93,6 +93,7 @@
   <ul>
     <li><a href="#introduction">Introduction</a></li>
     <li><a href="#inputs">Inputs</a></li>
+    <li><a href="#outputs">Outputs</a></li>
     <li><a href="#workflow">Workflow</a></li>
     <li><a href="#note">Note</a></li>
     <li><a href="#usage">Usage</a></li>
@@ -117,10 +118,17 @@
     <li><code>params</code>: Job Params in Json format. (required)</li>
   </ul>
 
+    <h2 id="outputs">Outputs</h2>
+
+  <ul>
+    <li><code>exit code</code>: 0 (SUCCESS) or 1 (FAIL) </li>
+    <li><code>log</code>: Jenkins Job Log</li>
+  </ul>
+
   <h2 id="workflow">Workflow</h2>
 
   <ol>
-    <li>Checkout repository: It checkouts the 'juananmora/jenkins_actions' repository at the 'development' reference using 'actions/checkout@v4'.</li>
+    <li>Checkout repository: It checkouts the 'juananmora/triggerjenkinsjob' repository at the 'brach' reference using 'actions/checkout@v2'.</li>
     <li>Setup Python: It sets up a Python environment with version 3.9 using 'actions/setup-python@v4'.</li>
     <li>Setup Node.js environment: It sets up a Node.js environment with version 16 using 'actions/setup-node@v4'.</li>
     <li>Install dependencies: It installs the necessary Python packages using pip (requests, argparse, and jenkinsapi).</li>
