@@ -20,7 +20,7 @@ runs:
   using: 'composite'
   steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: juananmora/triggerjenkinsjob
         ref: v1
