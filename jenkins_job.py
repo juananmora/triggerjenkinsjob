@@ -71,28 +71,3 @@ if __name__ == "__main__":
     params = json.loads(args.parameters)
 
     trigger_jenkins_job(args.urljenkins, args.user, args.token, args.job,params)
-    if build.get_status() != 'SUCCESS':
-        sys.exit(1)
-
-    except UnknownJob as e:
-        logging.error("Job '%s' not found: %s", job_name, e)
-        sys.exit(1)
-
-    except Exception as e:
-        logging.error("Failed to build job '%s': %s", job_name, e)
-        sys.exit(1)
-        
-    
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Trigger Jenkins Job")
-    parser.add_argument('urljenkins', type=str, help='url of Jenkins')
-    parser.add_argument('user', type=str, help='username for authentication')
-    parser.add_argument('token', type=str, help='token for authentication')
-    parser.add_argument('job', type=str, help='job of Jenkins')
-    parser.add_argument('parameters', type=str, help='other parameters in JSON format')
-
-    args = parser.parse_args()
-    params = json.loads(args.parameters)
-
-    trigger_jenkins_job(args.urljenkins, args.user, args.token, args.job,params)
