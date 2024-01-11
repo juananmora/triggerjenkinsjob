@@ -71,8 +71,8 @@ if __name__ == "__main__":
     params = json.loads(args.parameters)
 
     trigger_jenkins_job(args.urljenkins, args.user, args.token, args.job,params)
-        if build.get_status() != 'SUCCESS':
-            sys.exit(1)
+    if build.get_status() != 'SUCCESS':
+        sys.exit(1)
 
     except UnknownJob as e:
         logging.error("Job '%s' not found: %s", job_name, e)
